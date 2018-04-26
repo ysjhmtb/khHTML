@@ -38,54 +38,288 @@
 		</fieldset>
 	</form>
 	<hr>
-
-
-
-
-
-
-
-
-
-
-
-
 	
+	<h3>text</h3>
+	<p>text형태의 값을 입력하는 input - 1줄</p>
+<pre>
+속성
+ - name : 서버로 값 전송 시 해당 input의 key값으로 사용되는 속성
+ - size : 화면 내 해당 입력 창의 크기
+ - value : 해당 input의 값, 설정하지 않으면 빈값(null)
+ - maxlength : 입력 가능한 글자 수
+</pre>
+	<form>
+		<label>ID : </label><input type="text" name="userId" maxlength="20" size="25"/><br/>
+		<label>Password : </label><input type="text" name="userPwd" maxlength="20" size="20"/>
+	</form>
+	<hr>
 
+	<h3>password</h3>
+	<p>text형태의 값을 입력하는 input(값이 노출되지 않음)</p>
+<pre>
+ - minlength : 최소 글자 수 제한
+</pre>
+	<form>
+		<fieldset>
+			<legend>회원 가입</legend>
+			회원 ID : <input type="text" name="id" maxlength="10"/><br/>
+			비밀번호 : <input type="password" name="pwd" maxlength="20" minlength="8"/><br/>
+			비밀번호 확인 : <input type="password" name="pwdCheck" maxlength="20" minlength="8"/><br>		
+			<input type="submit" value="회원가입"/>
+		</fieldset>
+	</form>
+	<hr>
+	<h3>textarea(태그)</h3>
+	<p>여러줄의 텍스트 입력 - 여러줄</p>
+<pre>
+ cols : 입력 가능 칸수
+ rows : 입력 가능 줄수(표시)
+</pre>
+	자기소개서 : <textarea name="introduce" cols="50" rows="7">자기소개에 대해서 간략히 설명해주세요.</textarea>
+	<hr>
+	<h3>button</h3>
+	<p>사용자가 마우스 클릭을 이용해서 사용하는 input</p>
+<pre>
+ - id : id type의 구분자(고유한 값)
+ - value : 버튼에 출력 될 텍스트 값
+ - event : 자바스크립트의 메소드(함수) 설정 (클릭이벤트 속성 : onclick)
+              (event의 경우 javascript때 같이 해드리겠습니다.)
+</pre>
+	<form>
+		<input type="button" value="확인" onclick="checkForm();"/>
+	</form>
+	<script>
+		function checkForm(){
+			alert("입력 완료 했습니다.");
+		}
+	</script>
+	<hr>
 
+	<h3>checkbox/radio</h3>
+<pre>
+ - name : 서버에서 해당 인풋의 값을 찾을때 사용하는 key
+             (라디오버튼 같은 경우 모든 라디오버튼의 이름을 동일하게 설정한다.)
+ - checked : 해당 input의 체크 여부
+</pre>
+	<form>
+		<fieldset>
+			<legend>야식(다중 선택)</legend>
+			<input type="checkbox" name="chicken"/>치킨<br/>
+			<input type="checkbox" name="bunsik"/>엽떡<br/>
+			<input type="checkbox" name="pizza" checked="checked"/>피자 
+		</fieldset>
+		자바 활용 능력 : <input type="radio" name="java" value="A" checked="checked"/> 상
+							   <input type="radio" name="java" value="B"/> 중 
+							   <input type="radio" name="java" value="C"/> 하<br>
+		<input type="submit" value="제출하기"/>
+	</form>
+	<hr>
 
+	<h3>file</h3>
+	<p>파일을 선택, 전송할때 사용하는 속성</p>
+<pre>
+ - multiple : 여러개의 파일을 선택 할때 사용
+</pre>
+	<form>
+		파일 1개 선택 : <input type="file" name="attatch1"/><br/>
+		파일 다중 선택 : <input type="file" name="attatches" multiple/><br/>
+		<input type="submit" value="파일 업로드"/>
+	</form>
+	<hr>
+	
+	<h3>image</h3>
+	<p>이미지를 업로드, 혹은 출력할때 사용하는 속성</p>
+<pre>
+ - src : 출력 할 이미지의 경로
+</pre>
+	<form>
+		꽃그림1 : <input type="image" name="flower1" src="sample/image/flower1.PNG"/>
+	</form>
+	<hr>
 
+	<h3>submit/reset</h3>
+	<p>submit : 서버로 값을 전송할때 사용하는 속성,
+		  reset : 폼에 입력 된 데이터를 초기화 하는 속성</p>
+	<form>
+		<fieldset>
+			<legend>회원 가입</legend>
+			회원 ID : <input type="text" name="id" maxlength="10"/><br/>
+			비밀번호 : <input type="password" name="pwd" maxlength="20" minlength="8"/><br/>
+			비밀번호 확인 : <input type="password" name="pwdCheck" maxlength="20" minlength="8"/><br>		
+			<input type="submit" value="회원가입"/> 
+			<input type="reset" value="초기화"/>
+		</fieldset>
+	</form>
+	<hr>
 
+	<h1>html5에서 추가된 속성들</h1>
+	<h3>color</h3>
+	<p>사용자가 선택한 색의 값을 서버로 전달</p>
 
+	<form>
+		좋아하는 색은 ?<br/>
+		<input type="color" name="favoritColor"/><br/>
+		<input type="submit" value="등록"/>
+	</form>
+	<hr>
 
+	<h3>date, datetime-local, month, week</h3>
+	<p>전부 날짜 관련 속성(datetime -> datetime-local)</p>
+<pre>
+ 포멧
+  date : yyyy-mm-dd
+  datetime-local : yyyy-mm-ddT00-00(24)
+  month : yyyy-mm
+  week : 숫자
+ 
+ 속성
+  min : 최소 설정 가능 날짜
+  max : 최대 설정 가능 날짜
+</pre>
+	<form>
+		date 타입 : <input type="date" name="dateD"/><br/>
+		datetime-local 타입 : <input type="datetime-local" name="datetimeLocalD"/><br/>
+		month 타입 : <input type="month" name="monthD"/><br/>
+		week 타입 : <input type="week" name="week"/><br/>
+		<input type="submit" value="입력"/>
+	</form>
+	<hr>
+	
+	<h3>number/range</h3>
+	<p>숫자 데이터를 나타 낼때 사용(spinner)</p>
+<pre>
+ step : 한번에 증가/감소 하는 크기
+ min, max, value
+</pre>
+	<form>
+		number 속성 : <input type="number" min="0" max="100" step="2"
+		value="30" name="numberNum"/>
+		range 속성 : <input type="range" min="0" max="10" name="rangeNum" value="1"/> 
+		<input type="submit" value="전송"/>
+	</form>
+	<hr>
 
+	<h3>search/url/email/tel</h3>
 
+	<form>
+		검색어 입력 : <input type="search" name="searchText"/><br/>
+		URL 주소 입력 : <input type="url" name="urlText"/><br/>
+		<!-- 인터넷 주소를 입력 : http://ooooooo -->
+		이메일 입력 : <input type="email" name="emailText"/><br/>
+		전화번호 : <input type="tel" name="telText"/><br/>
+		<input type="submit" value="등록"/>
+	</form>
+	<hr>
+	
+	<h3>select</h3>
+	<p>여러 값들 중에 단일/복수개의 값을 선택 할때 사용</p>
+	<p>option태그를 이용하여 항목 설정</p>
+<pre>
+ multiple : 여러 값을 선택 하도록 하는 설정
+ size : 한번에 출력되는 option의 수
+ selected : option의 선택여부를 나타내는 속성
+</pre>
+	<form>
+		<fieldset>
+			<legend>당신의 직업은 무엇입니까?</legend>
+			<select name="job" size="3" multiple>
+				<option value="student">학생</option>
+				<option value="doctor">의사</option>
+				<option value="developer" selected="selected">개발자</option>
+				<option value="teacher">강사</option>
+			</select>
+		</fieldset>
 
+		<fieldset>
+			<legend>차종을 선택 하십시오.</legend>
+			<select name="model" size="5">
+				<!-- 경차 -->
+				<optgroup label="경차">
+					<option value="morning">morning</option>
+					<option value="Ray">Ray</option>
+					<option value="pony">pony</option>
+				</optgroup>
+				<!-- 중형 -->
+				<optgroup label="중형차">
+					<option value="K3">K3</option>
+					<option value="K5">K5</option>
+					<option value="K7">K7</option>
+				</optgroup>
+				<!-- 대형 -->
+				<optgroup label="대형차">
+					<option value="그랜져">그랜져</option>
+					<option value="genesis">genesis</option>
+				</optgroup>
+			</select>
+		</fieldset>
+		<input type="submit" value="전송"/>
+	</form>
+	<hr>
 
+	<h3>datalist</h3>
+	<p>해당 input 입력 시 값을 미리 저장 해놓는 태그</p>
+<pre>
+ - id : 고유한 값(식별자)
+ - list : datalist를 연결 하는 속성
+</pre>
+	<form>
+		자주 사용하는 브라우저 : <input type="text" name="browser" list="blist"/>
+<!--		ie, chrome, 파폭, 사파리, 오페라 -->
+		<datalist id="blist">
+			<option value="IE"/>
+			<option value="Chrome"/>
+			<option value="FireFox"/>
+			<option value="Safari"/>
+			<option value="Opera"/>
+		</datalist>
+	</form>
+	<hr>
+	
+	<h3>progress</h3>
+	<p>진행 상태(바)를 나타내는 태그</p>
+	download(%) : <progress value="50" max="100"></progress>
 
+	<h3>meter</h3>
+	<p>값이 차지하는 정도를 나타내는 태그 + 최적값(적정값을 색으로 구분)</p>
+<pre>
+	low : 범위의 최소값
+	high : 범위의 최대값
+	optimum : 최적값
+</pre>
+	<p>최적값이 중간일 경우(댐의 물의 양 50%)</p>
+	<meter min="0" max="100" value="40" low="45" high="55" optimum="50"></meter>40<br/>
+	<meter min="0" max="100" value="45" low="45" high="55" optimum="50"></meter>45<br/>
+	<meter min="0" max="100" value="50" low="45" high="55" optimum="50"></meter>50<br/>
+	<meter min="0" max="100" value="55" low="45" high="55" optimum="50"></meter>55<br/>
+	<meter min="0" max="100" value="60" low="45" high="55" optimum="50"></meter>60<br/>
+	<p>최적값이 최소/최대일 경우(cpu 점유율 0%)</p>
+	<meter min="0" max="100" value="30" low="45" high="65"
+	optimum="0"></meter>30%<br/>
+	<meter min="0" max="100" value="40" low="45" high="65"
+	optimum="0"></meter>40%<br/>
+	<meter min="0" max="100" value="50" low="45" high="65"
+	optimum="0"></meter>50%<br/>
+	<meter min="0" max="100" value="60" low="45" high="65"
+	optimum="0"></meter>60%<br/>
+	<meter min="0" max="100" value="70" low="45" high="65"
+	optimum="0"></meter>70%<br/>
+	<meter min="0" max="100" value="80" low="45" high="65"
+	optimum="0"></meter>80%<br/>
+	<hr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<h3>버튼을 이미지로 바꾸는 방법</h3>
+	<form>
+		이름 : <input type="text"/><br/>
+		<input type="submit">
+			<img src="sample/image/flower2.PNG" width="60" height="40"
+			alt="전송버튼">
+		</input><br/>
+		<button>
+			<img src="sample/image/flower2.PNG" width="60" height="40"
+			alt="전송버튼">
+		</button> 
+	</form>
+	<p>input - submit의 경우 이미지를 설정 할수 없습니다.(css 적용이 되지 않음) --> 이미지를 버튼으로 만들고 싶은 경우 button 태그를 이용하여 이미지를 추가한다.
+	</p>
  </body>
 </html>
